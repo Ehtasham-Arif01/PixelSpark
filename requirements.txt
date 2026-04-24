@@ -1,0 +1,31 @@
+# PixelSpark — System Requirements
+# Run: cat requirements.txt for setup guide
+
+# ── Flutter ──────────────────────────────────────
+# Flutter SDK >= 3.10.0
+# https://flutter.dev/docs/get-started/install
+# flutter --version
+
+# ── Android ──────────────────────────────────────
+# Android SDK (via Android Studio or sdkmanager)
+# Android NDK 26.1.10909125
+# Android SDK Platform 34
+# Android Build Tools 34.0.0
+# CMake 3.10.2
+
+# ── Python (for ML model generation only) ────────
+tensorflow>=2.15.0
+keras>=2.15.0
+numpy>=1.24.0
+
+# ── Install Python deps ───────────────────────────
+# pip install -r requirements.txt
+
+# ── Java ─────────────────────────────────────────
+# JDK 11 or 17 (for Gradle)
+# java -version
+
+# ── Device (for USB debugging) ───────────────────
+# Android 7.0+ (API 24+)
+# USB Debugging enabled
+# USB cable

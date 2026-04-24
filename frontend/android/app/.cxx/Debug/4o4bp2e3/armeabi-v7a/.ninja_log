@@ -1,0 +1,25 @@
+# ninja log v5
+0	103	1777023758164672053	CMakeFiles/image_processor.dir/src/image_processor.cpp.o	8e0c5be5fb669f2a
+1	1957	1777023760012700636	CMakeFiles/image_processor.dir/src/utils.cpp.o	10e15df3f546d1cc
+2	2306	1777023760366706112	CMakeFiles/image_processor.dir/src/filters/vintage.cpp.o	cdb3017b2f3d654f
+103	2313	1777023760365706097	CMakeFiles/image_processor.dir/src/filters/pencil_sketch.cpp.o	532c559b30910cb2
+8	2487	1777023760546708897	CMakeFiles/image_processor.dir/src/filters/emboss.cpp.o	b8afe21f0f72882a
+3	2656	1777023760695711201	CMakeFiles/image_processor.dir/src/filters/sepia.cpp.o	2abe0f079fcb33f8
+1	2734	1777023760793712717	CMakeFiles/image_processor.dir/src/filters/grayscale.cpp.o	1c3e204dbab56ab8
+2307	4030	1777023762086732720	CMakeFiles/image_processor.dir/src/filters/cartoon.cpp.o	d407164da753cf91
+2487	4736	1777023762771743318	CMakeFiles/image_processor.dir/src/adjustments/brightness.cpp.o	92211778b87905b8
+1960	4936	1777023762978746521	CMakeFiles/image_processor.dir/src/filters/color_sketch.cpp.o	88bde51ca42c9e5c
+2734	5019	1777023763059747774	CMakeFiles/image_processor.dir/src/adjustments/saturation.cpp.o	6f48f1c87580d65
+2313	5268	1777023763329751952	CMakeFiles/image_processor.dir/src/filters/ghibli_effect.cpp.o	e10b590971e1aa62
+2656	6161	1777023764216765677	CMakeFiles/image_processor.dir/src/adjustments/contrast.cpp.o	32077fd132b430f9
+4936	6362	1777023764423768880	CMakeFiles/image_processor.dir/src/blurs/gaussian_blur.cpp.o	5ad3a6e709c99c68
+4034	6794	1777023764853775534	CMakeFiles/image_processor.dir/src/adjustments/sharpen.cpp.o	ab6a74d0fadb7f96
+4741	7945	1777023765978792943	CMakeFiles/image_processor.dir/src/adjustments/gamma.cpp.o	e05b77537b74372e
+5268	8607	1777023766649803328	CMakeFiles/image_processor.dir/src/blurs/median_blur.cpp.o	c43fabc5c690fc5
+6163	8652	1777023766706804210	CMakeFiles/image_processor.dir/src/blurs/bilateral.cpp.o	aa90c477ed6ef3fd
+5020	8962	1777023767015808993	CMakeFiles/image_processor.dir/src/adjustments/detail_enhance.cpp.o	72f6d3589e06205a
+6363	9062	1777023767118810587	CMakeFiles/image_processor.dir/src/edge_detection/sobel.cpp.o	cf82da158e572830
+7946	9327	1777023767391814812	CMakeFiles/image_processor.dir/src/transforms/rotate.cpp.o	d41b5a34d39ac6e
+6794	9460	1777023767519816793	CMakeFiles/image_processor.dir/src/edge_detection/canny.cpp.o	c54a56acaadc5b64
+8608	9818	1777023767883822428	CMakeFiles/image_processor.dir/src/transforms/flip.cpp.o	e1655ebec34660e4
+9818	9883	1777023767951823480	/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/build/app/intermediates/cxx/Debug/4o4bp2e3/obj/armeabi-v7a/libimage_processor.so	5d9012d60345b54b

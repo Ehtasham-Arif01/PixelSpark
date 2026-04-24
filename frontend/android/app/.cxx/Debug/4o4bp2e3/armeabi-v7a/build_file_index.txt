@@ -1,0 +1,1 @@
+/home/ehtasham-arif/Desktop/image_editor_app-model/native/CMakeLists.txt

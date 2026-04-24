@@ -1,0 +1,25 @@
+# ninja log v5
+0	192	1777023746965498930	CMakeFiles/image_processor.dir/src/image_processor.cpp.o	a85cdfd21626e79f
+13	2521	1777023749278534673	CMakeFiles/image_processor.dir/src/filters/emboss.cpp.o	6e4a67acf2f73488
+2	2532	1777023749275534626	CMakeFiles/image_processor.dir/src/filters/grayscale.cpp.o	ecc03ab01486d905
+6	2540	1777023749293534905	CMakeFiles/image_processor.dir/src/filters/vintage.cpp.o	d86264c89561284c
+192	2609	1777023749379536234	CMakeFiles/image_processor.dir/src/filters/pencil_sketch.cpp.o	14d4f7e06624d4ee
+9	2674	1777023749445537254	CMakeFiles/image_processor.dir/src/filters/sepia.cpp.o	f8a54235f477348b
+4	3464	1777023750182548644	CMakeFiles/image_processor.dir/src/utils.cpp.o	f27c61bbd6be92b7
+2676	4832	1777023751606570654	CMakeFiles/image_processor.dir/src/adjustments/contrast.cpp.o	198817c2b40c5aec
+2540	4849	1777023751588570376	CMakeFiles/image_processor.dir/src/filters/ghibli_effect.cpp.o	d42b825c36703c8
+2530	5365	1777023752126578692	CMakeFiles/image_processor.dir/src/filters/color_sketch.cpp.o	20c867446de9c816
+2532	6103	1777023752845589807	CMakeFiles/image_processor.dir/src/filters/cartoon.cpp.o	1c4180a29165be18
+2609	6499	1777023753265596300	CMakeFiles/image_processor.dir/src/adjustments/brightness.cpp.o	11b4fe46045586f2
+3464	6533	1777023753286596625	CMakeFiles/image_processor.dir/src/adjustments/saturation.cpp.o	c5a4dbb99ef51e39
+4850	6578	1777023753332597336	CMakeFiles/image_processor.dir/src/adjustments/gamma.cpp.o	ff0179c8d3c75126
+4833	7379	1777023754126609611	CMakeFiles/image_processor.dir/src/adjustments/sharpen.cpp.o	ea34afad6c28ad07
+5365	8068	1777023754839620635	CMakeFiles/image_processor.dir/src/blurs/gaussian_blur.cpp.o	a01cb27111e0ea51
+6103	8092	1777023754862620991	CMakeFiles/image_processor.dir/src/adjustments/detail_enhance.cpp.o	c30dd90c5541a9eb
+6578	9093	1777023755855636345	CMakeFiles/image_processor.dir/src/edge_detection/sobel.cpp.o	76b09bece8f148ad
+8092	9457	1777023756225642066	CMakeFiles/image_processor.dir/src/transforms/flip.cpp.o	547a096b6285c9b3
+6535	9729	1777023756499646304	CMakeFiles/image_processor.dir/src/blurs/bilateral.cpp.o	31a24bfe247d7d80
+6502	9837	1777023756611648036	CMakeFiles/image_processor.dir/src/blurs/median_blur.cpp.o	65949e9341671964
+8068	10151	1777023756927652922	CMakeFiles/image_processor.dir/src/transforms/rotate.cpp.o	fe636094cd523677
+7379	10641	1777023757416660484	CMakeFiles/image_processor.dir/src/edge_detection/canny.cpp.o	e6c4683d69c377ee
+10642	10699	1777023757479661459	/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/build/app/intermediates/cxx/Debug/4o4bp2e3/obj/arm64-v8a/libimage_processor.so	dc9a15697db19163

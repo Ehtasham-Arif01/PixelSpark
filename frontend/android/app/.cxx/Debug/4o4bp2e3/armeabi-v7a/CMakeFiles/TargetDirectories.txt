@@ -1,0 +1,3 @@
+/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/Debug/4o4bp2e3/armeabi-v7a/CMakeFiles/image_processor.dir
+/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/Debug/4o4bp2e3/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/Debug/4o4bp2e3/armeabi-v7a/CMakeFiles/rebuild_cache.dir
