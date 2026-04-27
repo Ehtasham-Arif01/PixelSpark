@@ -9,8 +9,8 @@
 # ── Android ──────────────────────────────────────
 # Android SDK (via Android Studio or sdkmanager)
 # Android NDK 26.1.10909125
-# Android SDK Platform 34
-# Android Build Tools 34.0.0
+# Android SDK Platform 35
+# Android Build Tools 35.0.0
 # CMake 3.10.2
 
 # ── Python (for ML model generation only) ────────
@@ -22,7 +22,7 @@ numpy>=1.24.0
 # pip install -r requirements.txt
 
 # ── Java ─────────────────────────────────────────
-# JDK 11 or 17 (for Gradle)
+# JDK 21 (Bundled with Android Studio is recommended)
 # java -version
 
 # ── Device (for USB debugging) ───────────────────

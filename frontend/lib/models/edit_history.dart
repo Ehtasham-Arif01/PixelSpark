@@ -1,5 +1,5 @@
 import 'dart:typed_data';
-
+import 'package:image/image.dart' as img;
 import '../constants/app_constants.dart';
 
 class EditHistory {
@@ -11,11 +11,24 @@ class EditHistory {
     if (_index < _stack.length - 1) {
       _stack.removeRange(_index + 1, _stack.length);
     }
-    _stack.add(Uint8List.fromList(bytes));
+    
+    // Compress to JPEG 85% for history storage to save RAM
+    final compressed = _compressForHistory(bytes);
+    _stack.add(compressed);
+    
     if (_stack.length > AppConstants.maxHistory) {
       _stack.removeAt(0);
     }
     _index = _stack.length - 1;
+  }
+
+  Uint8List _compressForHistory(Uint8List bytes) {
+    final image = img.decodeImage(bytes);
+    if (image == null) return bytes;
+    // History stores compressed versions to save RAM
+    return Uint8List.fromList(
+      img.encodeJpg(image, quality: 85)
+    );
   }
 
   Uint8List? undo() {

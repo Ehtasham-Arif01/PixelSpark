@@ -1,0 +1,1 @@
+/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/build/app/intermediates/cxx/RelWithDebInfo/5s1c5n1o/obj/armeabi-v7a

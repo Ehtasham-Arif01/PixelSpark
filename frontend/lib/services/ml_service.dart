@@ -37,8 +37,18 @@ class _BlendPayload {
 
 Future<Uint8List> _mirnetIsolate(_MirnetPayload p) async {
   // 1. Decode bytes → img.Image
-  final decoded = img.decodeImage(p.bytes);
+  var decoded = img.decodeImage(p.bytes);
   if (decoded == null) throw StateError('Cannot decode input image.');
+
+  // Pre-resize for performance: limit to max 800px longest side
+  if (decoded.width > 800 || decoded.height > 800) {
+    decoded = img.copyResize(
+      decoded,
+      width: decoded.width > decoded.height ? 800 : null,
+      height: decoded.height >= decoded.width ? 800 : null,
+      interpolation: img.Interpolation.linear,
+    );
+  }
 
   final originalWidth  = decoded.width;
   final originalHeight = decoded.height;

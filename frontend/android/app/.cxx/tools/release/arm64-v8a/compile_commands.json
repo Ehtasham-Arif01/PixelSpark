@@ -1,0 +1,117 @@
+[
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/image_processor.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/image_processor.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/image_processor.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/utils.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/utils.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/utils.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/filters/grayscale.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/grayscale.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/grayscale.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/filters/sepia.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/sepia.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/sepia.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/filters/vintage.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/vintage.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/vintage.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/filters/emboss.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/emboss.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/emboss.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/filters/pencil_sketch.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/pencil_sketch.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/pencil_sketch.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/filters/color_sketch.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/color_sketch.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/color_sketch.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/filters/cartoon.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/cartoon.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/cartoon.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/filters/ghibli_effect.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/ghibli_effect.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/filters/ghibli_effect.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/adjustments/brightness.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/brightness.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/brightness.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/adjustments/contrast.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/contrast.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/contrast.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/adjustments/saturation.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/saturation.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/saturation.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/adjustments/sharpen.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/sharpen.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/sharpen.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/adjustments/gamma.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/gamma.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/gamma.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/adjustments/detail_enhance.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/detail_enhance.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/adjustments/detail_enhance.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/blurs/gaussian_blur.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/blurs/gaussian_blur.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/blurs/gaussian_blur.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/blurs/median_blur.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/blurs/median_blur.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/blurs/median_blur.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/blurs/bilateral.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/blurs/bilateral.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/blurs/bilateral.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/edge_detection/sobel.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/edge_detection/sobel.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/edge_detection/sobel.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/edge_detection/canny.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/edge_detection/canny.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/edge_detection/canny.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/transforms/rotate.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/transforms/rotate.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/transforms/rotate.cpp"
+},
+{
+  "directory": "/home/ehtasham-arif/Desktop/image_editor_app-model/frontend/android/app/.cxx/RelWithDebInfo/5s1c5n1o/arm64-v8a",
+  "command": "/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android24 --sysroot=/usr/lib/android-sdk/ndk/26.1.10909125/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dimage_processor_EXPORTS -I/home/ehtasham-arif/Desktop/image_editor_app-model/native/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -O2 -O2 -g -DNDEBUG -fPIC -fvisibility=default -std=gnu++17 -o CMakeFiles/image_processor.dir/src/transforms/flip.cpp.o -c /home/ehtasham-arif/Desktop/image_editor_app-model/native/src/transforms/flip.cpp",
+  "file": "/home/ehtasham-arif/Desktop/image_editor_app-model/native/src/transforms/flip.cpp"
+}
+]

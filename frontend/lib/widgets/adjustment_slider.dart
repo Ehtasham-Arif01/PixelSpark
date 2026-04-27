@@ -51,7 +51,7 @@ class _AdjustmentSliderState extends State<AdjustmentSlider> {
   void _handleChange(double val) {
     setState(() => _localValue = val);
     _debounce?.cancel();
-    _debounce = Timer(const Duration(milliseconds: 300), () {
+    _debounce = Timer(const Duration(milliseconds: 350), () {
       widget.onChanged(val);
     });
   }

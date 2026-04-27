@@ -27,16 +27,38 @@ class EditorProvider extends ChangeNotifier {
   bool   showBeforeAfter = false;
   String loadingMessage  = '';
   double enhStrength     = 1.0;
+  String? lastError;
 
   // ── Adjustment state ───────────────────────────────────────────────────────
-  double brightness = 0.0;
-  double contrast   = 0.0;
-  double saturation = 1.0;
-  double sharpen    = 0.0;
-  double gamma      = 1.0;
+  double _brightness = 0.0;
+  double _contrast   = 0.0;
+  double _saturation = 1.0;
+  double _sharpen    = 0.0;
+  double _gamma      = 1.0;
+
+  double get brightness => _brightness;
+  set brightness(double v) { _brightness = v; notifyListeners(); }
+
+  double get contrast => _contrast;
+  set contrast(double v) { _contrast = v; notifyListeners(); }
+
+  double get saturation => _saturation;
+  set saturation(double v) { _saturation = v; notifyListeners(); }
+
+  double get sharpen => _sharpen;
+  set sharpen(double v) { _sharpen = v; notifyListeners(); }
+
+  double get gamma => _gamma;
+  set gamma(double v) { _gamma = v; notifyListeners(); }
 
   // ── Crop state ─────────────────────────────────────────────────────────────
   bool isCropping = false;
+
+  // ── Filter thumbnails ──────────────────────────────────────────────────────
+  Map<String, Uint8List> filterThumbnails = {};
+
+  // ── Unsaved changes ────────────────────────────────────────────────────────
+  bool get hasUnsavedChanges => _history.historyCount > 1;
 
   // ── Computed ───────────────────────────────────────────────────────────────
   bool get canUndo  => _history.canUndo;
@@ -88,6 +110,8 @@ class EditorProvider extends ChangeNotifier {
     showBeforeAfter  = false;
     preEnhanceBytes  = null;
     postEnhanceBytes = null;
+    filterThumbnails = {};
+    _generateFilterThumbnails(bytes);
     notifyListeners();
   }
 
@@ -97,6 +121,16 @@ class EditorProvider extends ChangeNotifier {
     saturation = 1.0;
     sharpen    = 0.0;
     gamma      = 1.0;
+  }
+
+  // ── Debounce ───────────────────────────────────────────────────────────────
+  Timer? _debounceTimer;
+  void _debouncedApply(double value, Future<void> Function(double) fn) {
+    _debounceTimer?.cancel();
+    _debounceTimer = Timer(
+      const Duration(milliseconds: 350),
+      () => fn(value),
+    );
   }
 
   // ── History ────────────────────────────────────────────────────────────────
@@ -129,23 +163,22 @@ class EditorProvider extends ChangeNotifier {
   }
 
   // ── Generic operation runner ───────────────────────────────────────────────
-  Future<void> _runOp(
-    String message,
-    Future<Uint8List> Function(Uint8List) op,
-  ) async {
-    if (currentBytes == null || isLoading) return;
-    isLoading     = true;
-    loadingMessage = message;
+  Future<void> _runOp(String msg, Future<Uint8List> Function(Uint8List) op) async {
+    if (!hasImage) return;
+    isLoading = true;
+    loadingMessage = msg;
+    lastError = null;
     notifyListeners();
+
     try {
-      final result = await op(currentBytes!);
-      currentBytes = result;
-      _history.push(result);
+      final res = await op(currentBytes!);
+      currentBytes = res;
+      _history.push(res);
     } catch (e) {
       debugPrint('[Editor] Op error: $e');
+      lastError = 'Operation failed: ${e.toString()}';
     } finally {
-      isLoading     = false;
-      loadingMessage = '';
+      isLoading = false;
       notifyListeners();
     }
   }
@@ -153,32 +186,42 @@ class EditorProvider extends ChangeNotifier {
   // ── Adjustments ────────────────────────────────────────────────────────────
 
   Future<void> applyBrightness(double value) async {
-    brightness = value;
-    await _runOp('Adjusting brightness...',
-        (b) => NativeProcessor.adjustBrightness(b, value));
+    _debouncedApply(value, (v) async {
+      brightness = v;
+      await _runOp('Adjusting brightness...',
+          (b) => NativeProcessor.adjustBrightness(b, v));
+    });
   }
 
   Future<void> applyContrast(double value) async {
-    contrast = value;
-    await _runOp('Adjusting contrast...',
-        (b) => NativeProcessor.adjustContrast(b, value));
+    _debouncedApply(value, (v) async {
+      contrast = v;
+      await _runOp('Adjusting contrast...',
+          (b) => NativeProcessor.adjustContrast(b, v));
+    });
   }
 
   Future<void> applySaturation(double value) async {
-    saturation = value;
-    await _runOp('Adjusting vibrance...',
-        (b) => NativeProcessor.adjustSaturation(b, value));
+    _debouncedApply(value, (v) async {
+      saturation = v;
+      await _runOp('Adjusting vibrance...',
+          (b) => NativeProcessor.adjustSaturation(b, v));
+    });
   }
 
   Future<void> applySharpen(double value) async {
-    sharpen = value;
-    await _runOp('Sharpening...', (b) => NativeProcessor.applySharpen(b, value));
+    _debouncedApply(value, (v) async {
+      sharpen = v;
+      await _runOp('Sharpening...', (b) => NativeProcessor.applySharpen(b, v));
+    });
   }
 
   Future<void> applyGamma(double value) async {
-    gamma = value;
-    await _runOp('Adjusting exposure...',
-        (b) => NativeProcessor.applyGamma(b, value));
+    _debouncedApply(value, (v) async {
+      gamma = v;
+      await _runOp('Adjusting exposure...',
+          (b) => NativeProcessor.applyGamma(b, v));
+    });
   }
 
   Future<void> applySmartEnhance() async =>
@@ -259,9 +302,9 @@ class EditorProvider extends ChangeNotifier {
       _history.push(enhanced);
     } catch (e) {
       debugPrint('[Editor] AI enhance error: $e');
+      lastError = 'AI Enhancement failed: ${e.toString()}';
     } finally {
-      isEnhancing   = false;
-      loadingMessage = '';
+      isEnhancing = false;
       notifyListeners();
     }
   }
@@ -330,20 +373,28 @@ class EditorProvider extends ChangeNotifier {
   // ── Public loadBytes (for preloaded image from HomeScreen) ────────────────
   void loadBytes(Uint8List bytes) => _loadBytes(bytes);
 
-  // ── Generate a small thumbnail for filter preview ──────────────────────────
-  Future<Uint8List> generateFilterThumb(String filterId, Uint8List src) async {
-    // Downscale source to 100x100 first for speed
-    final small = await compute(_resizeToThumb, src);
-    switch (filterId) {
-      case 'pencilArt':   return NativeProcessor.applyPencilSketch(small);
-      case 'animeStyle':  return NativeProcessor.applyGhibli(small);
-      case 'colorPop':    return NativeProcessor.applyColorSketch(small);
-      case 'comicBook':   return NativeProcessor.applyCartoon(small);
-      case '3dRelief':    return NativeProcessor.applyEmboss(small);
-      case 'warmClassic': return NativeProcessor.applySepia(small);
-      case 'retroFilm':   return NativeProcessor.applyVintage(small);
-      case 'blackWhite':  return NativeProcessor.applyGrayscale(small);
-      default:            return small;
+  Future<void> _generateFilterThumbnails(Uint8List bytes) async {
+    try {
+      // Step 1: Generate 100x100 base thumbnail
+      final thumb = await compute(_resizeIsolate, _ResizePayload(bytes: bytes, size: 100));
+      
+      // Step 2: Apply each filter to thumbnail in parallel
+      final ids = [
+        'pencilArt', 'animeStyle', 'colorPop', 'comicBook',
+        '3dRelief', 'warmClassic', 'retroFilm', 'blackWhite'
+      ];
+      
+      final futures = ids.map((id) => compute(_applyFilterIsolate, _FilterPayload(thumb, id))).toList();
+      final results = await Future.wait(futures);
+      
+      // Step 3: Store in map
+      filterThumbnails = {'original': thumb};
+      for (int i = 0; i < ids.length; i++) {
+        filterThumbnails[ids[i]] = results[i];
+      }
+      notifyListeners();
+    } catch (e) {
+      debugPrint('[Editor] Thumbnail generation error: $e');
     }
   }
 
@@ -369,11 +420,66 @@ class EditorProvider extends ChangeNotifier {
   }
 }
 
-// Top-level isolate for thumbnail resize
-Uint8List _resizeToThumb(Uint8List bytes) {
-  final img_lib = img.decodeImage(bytes);
-  if (img_lib == null) return bytes;
-  final thumb = img.copyResize(img_lib, width: 100, height: 100,
+// ── Isolate Payloads ────────────────────────────────────────────────────────
+
+class _ResizePayload {
+  final Uint8List bytes;
+  final int size;
+  _ResizePayload({required this.bytes, required this.size});
+}
+
+class _FilterPayload {
+  final Uint8List bytes;
+  final String filterId;
+  _FilterPayload(this.bytes, this.filterId);
+}
+
+// ── Top-level isolates for pure Dart processing ──────────────────────────────
+
+Uint8List _resizeIsolate(_ResizePayload p) {
+  final image = img.decodeImage(p.bytes);
+  if (image == null) return p.bytes;
+  final thumb = img.copyResize(image, width: p.size, height: p.size,
       interpolation: img.Interpolation.average);
   return Uint8List.fromList(img.encodePng(thumb));
+}
+
+Uint8List _applyFilterIsolate(_FilterPayload p) {
+  final image = img.decodeImage(p.bytes);
+  if (image == null) return p.bytes;
+
+  switch (p.filterId) {
+    case 'blackWhite':
+    case 'grayscale':
+      img.grayscale(image);
+      break;
+    case 'warmClassic':
+      // Sepia approximation
+      img.sepia(image);
+      break;
+    case 'retroFilm':
+      img.sepia(image, amount: 0.5);
+      img.vignette(image);
+      break;
+    case 'pencilArt':
+      img.grayscale(image);
+      img.sobel(image);
+      img.invert(image);
+      break;
+    case '3dRelief':
+      img.emboss(image);
+      break;
+    case 'animeStyle':
+      // Simplified: boost saturation and brightness
+      img.adjustColor(image, saturation: 1.5, brightness: 1.2);
+      break;
+    case 'colorPop':
+      img.adjustColor(image, saturation: 2.0);
+      break;
+    case 'comicBook':
+      img.quantize(image, numberOfColors: 8);
+      break;
+  }
+
+  return Uint8List.fromList(img.encodePng(image));
 }

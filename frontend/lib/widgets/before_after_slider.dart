@@ -22,16 +22,19 @@ class BeforeAfterSlider extends StatefulWidget {
 
 class _BeforeAfterSliderState extends State<BeforeAfterSlider> {
   double _position = 0.5;
+  bool _isDragging = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onHorizontalDragUpdate: (details) {
+      onPanStart: (_) => setState(() => _isDragging = true),
+      onPanUpdate: (details) {
         setState(() {
           _position = (_position + details.delta.dx / widget.width)
-              .clamp(0.02, 0.98);
+              .clamp(0.01, 0.99);
         });
       },
+      onPanEnd: (_) => setState(() => _isDragging = false),
       child: SizedBox(
         width: widget.width,
         height: widget.height,
@@ -61,45 +64,50 @@ class _BeforeAfterSliderState extends State<BeforeAfterSlider> {
               left: widget.width * _position - 1,
               top: 0,
               bottom: 0,
-              child: Container(width: 2, color: Colors.white),
+              child: Container(width: 2, color: Colors.white70),
             ),
 
             // Drag handle
             Positioned(
               left: widget.width * _position - 22,
               top: widget.height / 2 - 22,
-              child: Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      blurRadius: 8,
-                      spreadRadius: 2,
-                    ),
-                  ],
-                ),
-                child: const Icon(
-                  Icons.compare_arrows,
-                  color: Colors.black87,
-                  size: 22,
+              child: AnimatedScale(
+                scale: _isDragging ? 1.25 : 1.0,
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeOutBack,
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 12,
+                        spreadRadius: 2,
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.compare_arrows,
+                    color: Colors.black87,
+                    size: 24,
+                  ),
                 ),
               ),
             ),
 
             // BEFORE label
             Positioned(
-              top: 12,
+              bottom: 12,
               left: 12,
               child: _SliderLabel('BEFORE'),
             ),
 
             // AFTER label
             Positioned(
-              top: 12,
+              bottom: 12,
               right: 12,
               child: _SliderLabel('AFTER'),
             ),

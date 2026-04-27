@@ -16,6 +16,10 @@ subprojects {
                 if (namespace == null) {
                     namespace project.group
                 }
+                compileSdkVersion 35
+                defaultConfig {
+                    targetSdkVersion 35
+                }
                 compileOptions {
                     sourceCompatibility JavaVersion.VERSION_1_8
                     targetCompatibility JavaVersion.VERSION_1_8

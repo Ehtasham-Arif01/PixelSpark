@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import '../constants/app_constants.dart';
@@ -76,8 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverToBoxAdapter(child: _buildHero(provider)),
           SliverToBoxAdapter(child: _buildAICard(provider)),
           SliverToBoxAdapter(child: _buildToolGrid()),
-          if (_recentFiles.isNotEmpty)
-            SliverToBoxAdapter(child: _buildRecentSection()),
+          SliverToBoxAdapter(child: _buildRecentSection()),
           const SliverToBoxAdapter(child: SizedBox(height: 100)),
         ],
       ),
@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildHero(EditorProvider provider) {
     return Container(
-      height: 280,
+      constraints: const BoxConstraints(minHeight: 280),
       decoration: const BoxDecoration(gradient: AppTheme.heroGradient),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
       child: SafeArea(
@@ -146,12 +146,15 @@ class _HomeScreenState extends State<HomeScreen> {
             const Icon(Icons.auto_awesome,
                 color: AppTheme.cyan, size: 40),
             const SizedBox(height: 10),
-            const Text(
-              'Transform Your Photos',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 26,
-                fontWeight: FontWeight.w800,
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: const Text(
+                'Transform Your Photos',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             ),
             const SizedBox(height: 6),
@@ -182,9 +185,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     label: '📸  Camera',
                     filled: false,
                     onTap: () async {
-                      await provider.captureImage();
-                      if (provider.hasImage && mounted) {
-                        _openEditor(imageBytes: provider.currentBytes);
+                      final status = await Permission.camera.request();
+                      if (status.isGranted) {
+                        await provider.captureImage();
+                        if (provider.hasImage && mounted) {
+                          _openEditor(imageBytes: provider.currentBytes);
+                        }
+                      } else {
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Camera permission denied')),
+                          );
+                        }
                       }
                     },
                   ),
@@ -201,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildAICard(EditorProvider provider) {
     return Transform.translate(
-      offset: const Offset(0, -20),
+      offset: const Offset(0, -10),
       child: Container(
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       decoration: BoxDecoration(
@@ -222,24 +234,29 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(children: [
-                  const Text('✦ ',
-                      style: TextStyle(color: AppTheme.aiPurple, fontSize: 16)),
-                  const Text(
-                    'AI Auto Enhance',
-                    style: TextStyle(
-                        color: AppTheme.navy,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16),
-                  ),
-                ]),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(children: [
+                    const Text('✦ ',
+                        style: TextStyle(color: AppTheme.aiPurple, fontSize: 16)),
+                    const Text(
+                      'AI Auto Enhance',
+                      style: TextStyle(
+                          color: AppTheme.navy,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16),
+                    ),
+                  ]),
+                ),
                 const SizedBox(height: 4),
                 Text(
                   provider.mlLoaded
-                      ? 'MIRNet model ready • Intelligent photo enhancement'
-                      : 'C++ engine ready • Pick a photo to start',
+                      ? 'AI Engine active • Intelligent photo enhancement'
+                      : 'Optimization active • Select a photo to begin',
                   style: const TextStyle(
                       color: AppTheme.textGrey, fontSize: 12),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 12),
                 GestureDetector(
@@ -348,50 +365,77 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: AppTheme.navy,
                       fontSize: 18,
                       fontWeight: FontWeight.w700)),
-              TextButton(
-                onPressed: _loadRecent,
-                child: const Text('Refresh',
-                    style: TextStyle(
-                        color: AppTheme.textGrey, fontSize: 13)),
-              ),
+              if (_recentFiles.isNotEmpty)
+                TextButton(
+                  onPressed: _loadRecent,
+                  child: const Text('Refresh',
+                      style: TextStyle(
+                          color: AppTheme.textGrey, fontSize: 13)),
+                ),
             ],
           ),
           const SizedBox(height: 12),
-          SizedBox(
-            height: 130,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: _recentFiles.length,
-              separatorBuilder: (_, __) => const SizedBox(width: 10),
-              itemBuilder: (_, i) {
-                final f    = _recentFiles[i];
-                final thumb = _thumbCache[f.path];
-                return GestureDetector(
-                  onTap: () async {
-                    final bytes = await f.readAsBytes();
-                    if (mounted) {
-                      _openEditor(imageBytes: bytes);
+          if (_recentFiles.isEmpty)
+            Container(
+              height: 130,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: AppTheme.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: AppTheme.border),
+              ),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.photo_library_outlined, color: AppTheme.textGrey, size: 32),
+                  SizedBox(height: 8),
+                  Text('No recent edits yet', style: TextStyle(color: AppTheme.textGrey, fontSize: 13)),
+                ],
+              ),
+            )
+          else
+            SizedBox(
+              height: 130,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: _recentFiles.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 10),
+                itemBuilder: (_, i) {
+                  final f = _recentFiles[i];
+                  return FutureBuilder<Uint8List>(
+                    future: f.readAsBytes().then((b) => StorageService.thumbnail(b)),
+                    builder: (context, snapshot) {
+                      return GestureDetector(
+                        onTap: () async {
+                          final bytes = await f.readAsBytes();
+                          if (mounted) {
+                            _openEditor(imageBytes: bytes);
+                          }
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: snapshot.hasData
+                              ? Image.memory(snapshot.data!,
+                                  width: 120, height: 120,
+                                  fit: BoxFit.cover)
+                              : Container(
+                                  width: 120,
+                                  height: 120,
+                                  color: AppTheme.border,
+                                  child: const Center(
+                                    child: SizedBox(
+                                      width: 24, height: 24,
+                                      child: CircularProgressIndicator(strokeWidth: 2),
+                                    ),
+                                  ),
+                                ),
+                        ),
+                      );
                     }
-                  },
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: thumb != null
-                        ? Image.memory(thumb,
-                            width: 120, height: 120,
-                            fit: BoxFit.cover)
-                        : Container(
-                            width: 120,
-                            height: 120,
-                            color: AppTheme.border,
-                            child: const Icon(
-                                Icons.image_outlined,
-                                color: AppTheme.textGrey),
-                          ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
         ],
       ),
     );
@@ -451,24 +495,31 @@ class _HeroButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 52,
-        decoration: BoxDecoration(
-          color: filled ? Colors.white : Colors.transparent,
-          borderRadius: BorderRadius.circular(14),
-          border: filled
-              ? null
-              : Border.all(color: Colors.white, width: 1.5),
-        ),
-        child: Center(
-          child: Text(
-            label,
-            style: TextStyle(
-              color: filled ? AppTheme.navy : Colors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 14,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(14),
+        child: Ink(
+          height: 52,
+          decoration: BoxDecoration(
+            color: filled ? Colors.white : Colors.transparent,
+            borderRadius: BorderRadius.circular(14),
+            border: filled
+                ? null
+                : Border.all(color: Colors.white, width: 1.5),
+          ),
+          child: Center(
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                label,
+                style: TextStyle(
+                  color: filled ? AppTheme.navy : Colors.white,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                ),
+              ),
             ),
           ),
         ),
@@ -485,54 +536,58 @@ class _ToolCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppTheme.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppTheme.border),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.04),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                color: tool.color,
-                borderRadius: BorderRadius.circular(12),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Ink(
+          decoration: BoxDecoration(
+            color: AppTheme.white,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: AppTheme.border),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.04),
+                blurRadius: 8,
+                offset: const Offset(0, 2),
               ),
-              child: Icon(tool.icon, color: Colors.white, size: 24),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(tool.label,
-                      style: const TextStyle(
-                          color: AppTheme.navy,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 13)),
-                  const SizedBox(height: 2),
-                  Text(tool.subtitle,
-                      style: const TextStyle(
-                          color: AppTheme.textGrey, fontSize: 11),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis),
-                ],
+            ],
+          ),
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: tool.color,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(tool.icon, color: Colors.white, size: 24),
               ),
-            ),
-          ],
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(tool.label,
+                        style: const TextStyle(
+                            color: AppTheme.navy,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13)),
+                    const SizedBox(height: 2),
+                    Text(tool.subtitle,
+                        style: const TextStyle(
+                            color: AppTheme.textGrey, fontSize: 11),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
